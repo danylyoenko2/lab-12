@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+    <h1 class="app__title">Language learning</h1>
+
+    <div class="layout">
+        <aside class="levels">
+            <fieldset class="levels__group">
+                <legend class="levels__title">Рівень складності</legend>
+                <div id="levels-list" class="levels__list"></div>
+            </fieldset>
+        </aside>
+
+        <main class="app">
+            <section id="card" class="card" tabindex="0" role="button"
+                     aria-label="Картка зі словом. Натисніть, щоб перевірити переклад">
+                <span id="word" class="card__word"></span>
+                <span id="feedback" class="card__feedback" aria-live="polite"></span>
+            </section>
+
+            <div class="nav">
+                <button id="prev" class="nav__btn" type="button" aria-label="Попереднє слово">
+                    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <span id="step" class="nav__step">1/10</span>
+                <button id="next" class="nav__btn" type="button" aria-label="Наступне слово">
+                    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+
+            <form id="answer-form" class="answer" novalidate autocomplete="off">
+                <label for="answer" class="visually-hidden">Переклад слова</label>
+                <input id="answer" class="answer__input" type="text" maxlength="40"
+                       placeholder="Введіть переклад українською" aria-describedby="error">
+                <p id="error" class="answer__error" role="alert"></p>
+            </form>
+
+            <p class="hint">Введіть переклад і натисніть на картку (або Enter)</p>
+
+            <section class="stats">
+                <h2 class="stats__title">Статистика</h2>
+                <div class="stats__row">
+                    <div class="stats__item stats__item--ok">
+                        <span class="stats__label">Вірно</span>
+                        <strong id="stat-ok" class="stats__value">0</strong>
+                    </div>
+                    <div class="stats__item stats__item--bad">
+                        <span class="stats__label">Невірно</span>
+                        <strong id="stat-bad" class="stats__value">0</strong>
+                    </div>
+                </div>
+            </section>
+
+            <button id="restart" class="btn btn--ghost" type="button">Почати спочатку</button>
+        </main>
+    </div>
+</div>
+
+<div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="modal-close" class="modal__close" type="button" aria-label="Закрити">&times;</button>
+        <h2 id="modal-title" class="modal__title">Результат</h2>
+        <div id="modal-level" class="modal__level"></div>
+        <p id="modal-name" class="modal__name"></p>
+        <p id="modal-score" class="modal__score"></p>
+        <p id="modal-difficulty" class="modal__difficulty"></p>
+        <p id="modal-text" class="modal__text"></p>
+        <button id="modal-restart" class="btn" type="button">Спробувати ще раз</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
